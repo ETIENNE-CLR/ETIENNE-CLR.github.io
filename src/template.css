@@ -1,0 +1,24 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0 3%;
+    width: auto;
+    overflow-x: hidden;
+    transform: scale(1);
+    flex-direction: column;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Arial, Geneva, Verdana, sans-serif;
+}
+
+button {
+    transition: all 0.1s;
+}
+
+button:active {
+    transform: scale(0.9);
+}
