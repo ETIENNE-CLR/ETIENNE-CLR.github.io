@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,24 @@
     <link rel="stylesheet" href="src/template.css">
     <title>Pokemon</title>
     <style>
+        @keyframes bloubloup {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(15deg);
+            }
+
+            20% {
+                transform: rotate(-15deg);
+            }
+
+            30% {
+                transform: rotate(0deg);
+            }
+        }
+
         html {
             overflow-x: hidden;
         }
@@ -24,6 +42,13 @@
         #map {
             width: 100%;
             overflow-x: hidden;
+        }
+
+        .poke-catch {
+            width: 22%;
+            animation: bloubloup 1.5s linear infinite;
+            cursor: pointer;
+            filter: brightness(1);
         }
     </style>
 </head>

@@ -6,7 +6,17 @@ const earthRadius = 6371;
 // Au chargement de la page
 let lesPokemon;
 document.addEventListener('DOMContentLoaded', async function () {
-    lesPokemon = await getPokemonFromApi();
+    const btn_iusecache = document.getElementById('btncheck1');
+    btn_iusecache.checked = getIfUseCache();
+    btn_iusecache.addEventListener('click', async function () {
+        if (!localStorage.getItem('dataStored')) {
+            await saveAPIdata();
+        }
+        setIfUseCache(btn_iusecache.checked);
+        window.location.reload();
+    });
+
+    lesPokemon = getIfUseCache() ? lesPokemon = getDataStored() : await getPokemonFromApi();
     lesPokemon.shift();
     loadPokemon(lesPokemon);
 });
@@ -72,7 +82,7 @@ function loadPokemon(pokemonJson) {
         btn_trouverPokemon.className = 'btn btn-primary';
         btn_trouverPokemon.style.fontSize = '13px';
         btn_trouverPokemon.innerText = 'Trouver le pokémon';
-        div_cart_body.appendChild(btn_trouverPokemon);
+        // div_cart_body.appendChild(btn_trouverPokemon);
         if (myList[pokemon.name.fr] == true) {
             btn_trouverPokemon.className = 'btn btn-secondary';
         }

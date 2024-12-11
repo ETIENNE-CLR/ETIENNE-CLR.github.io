@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -20,18 +20,21 @@
 </head>
 
 <body class="col-12 p-0">
-    <div class="col-12 d-flex justify-content-evenly mb-3">
-        <button type="button" id="pokeToMap" class="btn btn-info">Afficher des pokémon sur la carte</button>
-        <button type="button" id="clear" class="btn btn-danger">Relacher les pokemons</button>
-    </div>
-    <div class="col-12">
-        <h1 id="range-label" class="h5 text-center">10 %</h1>
-        <div class="col-10 mx-auto d-flex justify-content-evenly">
-            <span>1</span>
-            <input id="rarity" class="w-75" type="range" min="0" value="20" step="10" max="100">
-            <span>100</span>
+    <fieldset class="m-3 col-lg-10 mx-auto p-3 border border-2 rounded">
+        <legend>Options</legend>
+        <div class="col-12 d-flex justify-content-evenly mb-3 flex-wrap">
+            <button type="button" id="pokeToMap" class="btn btn-success">Afficher des pokémon aléatoires sur la carte</button>
+
+            <!-- Options de cache -->
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck1">Utiliser le cache</label>
+
+                <button type="button" onclick="saveAPIdata()" class="btn btn-outline-primary">Sauvegarder les données</button>
+            </div>
+            <button type="button" id="clear" class="btn btn-danger">Relacher les pokemons</button>
         </div>
-    </div>
+    </fieldset>
 
     <div class="d-flex flex-wrap col-lg-11 mx-auto m-0" id="cont-pokemon"></div>
 
@@ -54,15 +57,6 @@
         localStorage.clear();
         window.location = 'index.html';
     });
-
-    let ipt_range = document.getElementById('rarity');
-    let label = document.getElementById('range-label');
-    label.innerText = `${ipt_range.value} %`;
-    ipt_range.addEventListener('change', function () {
-        label = document.getElementById('range-label');
-        label.innerText = `${ipt_range.value} %`;
-    });
-
     document.getElementById('pokeToMap').addEventListener('click', function(){
         put_in_map();
     });

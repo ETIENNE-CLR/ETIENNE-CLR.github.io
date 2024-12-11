@@ -19,3 +19,30 @@ function get_pokemon_markers() {
 function set_pokemon_markers(jsonValue) {
     localStorage.setItem('pokemon_markers', JSON.stringify(jsonValue));
 }
+
+// Options
+function getIfUseCache() {
+    return (localStorage.getItem('cache') == "true");
+}
+
+function setIfUseCache(value) {
+    return localStorage.setItem('cache', value);
+}
+
+function getDataStored() {
+    return JSON.parse(localStorage.getItem('dataStored'));
+}
+
+async function saveAPIdata() {
+    let APIdata = await getPokemonFromApi();
+    localStorage.setItem('dataStored', JSON.stringify(APIdata));
+    console.log('données sauvegardées avec succès');
+}
+
+function getMyPokemon() {
+    let data = localStorage.getItem('mypokemon');
+    return data == null ? [] : JSON.parse(data);
+}
+function setMyPokemon(value) {
+    localStorage.setItem('mypokemon', JSON.stringify(value));
+}
